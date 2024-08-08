@@ -1,0 +1,37 @@
+import sys
+
+def main():
+    locks, stocks, barrels, t_sales, flag = 0, 0, 0, 0, 0
+    commission = 0.0
+
+    locks = int(input("Enter the total number of locks: "))
+    if (locks <= 0) or (locks > 70):
+        flag = 1
+
+    stocks = int(input("Enter the total number of stocks: "))
+    if (stocks <= 0) or (stocks > 80):
+        flag = 1
+
+    barrels = int(input("Enter the total number of barrels: "))
+    if (barrels <= 0) or (barrels > 90):
+        flag = 1
+
+    if flag == 1:
+        print("invalid input")
+        sys.exit(0)
+
+    t_sales = (locks * 45) + (stocks * 30) + (barrels * 25)
+    if t_sales <= 1000:
+        commission = 0.10 * t_sales
+    elif t_sales < 1800:
+        commission = 0.10 * 1000
+        commission += 0.15 * (t_sales - 1000)
+    else:
+        commission = 0.10 * 1000
+        commission += 0.15 * 800
+        commission += 0.20 * (t_sales - 1800)
+
+    print(f"The total sales is {t_sales}\nThe commission is {commission}")
+
+if _name_ == "_main_":
+    main()

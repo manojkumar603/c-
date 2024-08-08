@@ -1,0 +1,39 @@
+def binary_search(arr, key):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == key:
+            return mid  # Key found, return the index
+        elif arr[mid] < key:
+            low = mid + 1  # Key is in the upper half
+        else:
+            high = mid - 1  # Key is in the lower half
+
+    return -1  # Key not found
+
+def main():
+    n = int(input("Enter the number of elements: "))
+    
+    if n > 0:
+        arr = []
+        print("Enter the elements in ascending order:")
+        for i in range(n):
+            arr.append(int(input()))
+        
+        key = int(input("Enter the key element to be searched: "))
+        
+        # Perform binary search
+        result = binary_search(arr, key)
+        
+        if result != -1:
+            print(f"Element found at position = {result + 1}")
+        else:
+            print("Element not found")
+    else:
+        print("Number of elements should be greater than 0.")
+
+if _name_ == "_main_":
+    main()
